@@ -20,6 +20,17 @@ you can add all conponents you need to install in dev.dockerfile
 - select workspace directory "/workspace"
 - clone your repository here and can start to work with it
 
+## generate ssh keys for github
+- run 
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- run to see your public key 
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+- go to "https://github.com/settings/keys" and add your public key
+
 # Nginx container
 
 ## run nginx container
