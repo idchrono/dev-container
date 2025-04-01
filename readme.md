@@ -26,7 +26,7 @@ git clone https://github.com/your/repository.git /workspace
 ```
 
 ## add preinstalled components to dev container
-you can add all conponents you need to install in dev.dockerfile
+you can add all components you need to install in dev.dockerfile
 
 ## develop inside container (vs code)
 - open "vs code"
@@ -52,7 +52,7 @@ private key: dockerkey (generated before build dev container)
 - select you connection in "remote development" window
 - press "Check connection and continue"
 - "solution file" - select directory with your project
-- press "Start IDE and Connect" (may be "Download IDE and Continue" when first connect)
+- press "Start IDE and Connect" (maybe "Download IDE and Continue" when first connect)
 - input your "passphrase", used when ssh-key was generated
 
 ## generate ssh keys for github
