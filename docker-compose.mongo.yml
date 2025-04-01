@@ -1,0 +1,27 @@
+name: "ts-dev-container"
+
+volumes:
+  db-data:
+
+
+networks:
+  dev-container-net:
+
+
+services:
+  mongo:
+    container_name: mongo-db
+    image: mongo
+    restart: always
+    volumes:
+      - db-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo-user
+      MONGO_INITDB_ROOT_PASSWORD: mongo-pass
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev-container-net

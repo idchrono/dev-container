@@ -1,0 +1,30 @@
+name: "ts-dev-container"
+
+volumes:
+  workspace-data:
+  ssh-data:
+
+
+networks:
+  dev-container-net:
+
+
+services:
+  app:
+    container_name: app
+    build: { dockerfile: dev.dockerfile }
+    volumes:
+      - workspace-data:/workspace
+      - ssh-data:/root/.ssh
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev-container-net
