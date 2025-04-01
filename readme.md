@@ -110,3 +110,4 @@ docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-c
 - "workspace-data" - your work directory, can be mounted to your file system
 - "ssh-data" - mounted directory to store your ssh keys to not lost them after container recreated
 - "db-data" - mounted directory to store mongodb data to not lost them after container recreated
+- "root-cache" - mounted directory to store cache (at least jetbrains) to not lost them after container recreated

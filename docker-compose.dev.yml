@@ -3,6 +3,7 @@ name: "ts-dev-container"
 volumes:
   workspace-data:
   ssh-data:
+  root-cache:
 
 
 networks:
@@ -17,6 +18,7 @@ services:
     volumes:
       - workspace-data:/workspace
       - ssh-data:/root/.ssh
+      - root-cache:/root/.cache
     cap_add:
       - SYS_PTRACE
     security_opt:
