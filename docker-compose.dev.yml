@@ -26,5 +26,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - "2222:22"
     networks:
       - dev-container-net

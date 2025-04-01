@@ -1,5 +1,10 @@
 # TS Dev Container
 
+## generate ssh keys to access ssh server inside container
+```sh
+ssh-keygen -b 4096 -t rsa -f dockerkey
+```
+
 ## run dev container
 - run command ```docker-compose -f .\docker-compose.dev.yml up -d```
 - directory to work "/workspace"
