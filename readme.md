@@ -4,6 +4,7 @@
 ```sh
 ssh-keygen -b 4096 -t rsa -f dockerkey
 ```
+don't forget to use passphrase
 
 ## run dev container
 - run command ```docker-compose -f .\docker-compose.dev.yml up -d```
@@ -25,8 +26,27 @@ you can add all conponents you need to install in dev.dockerfile
 - select workspace directory "/workspace"
 - clone your repository here and can start to work with it
 
+## develop inside container (rider)
+- open "rider"
+- select "remote development"
+- select "ssh" -> "new project"
+- add "ssh connection" 
+```
+host: localhost
+port: 2222 (check it in docker-compose.dev.yml file)
+username: root
+authentification type: key pair
+private key: dockerkey (generated before build dev container)
+```
+- save new connection
+- select you connection in "remote development" window
+- press "Check connection and continue"
+- "solution file" - select directory with your project
+- press "Start IDE and Connect" (may be "Download IDE and Continue" when first connect)
+- input your "passphrase", used when ssh-key was generated
+
 ## generate ssh keys for github
-- run 
+- run to generate keys
 ```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
