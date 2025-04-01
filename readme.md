@@ -9,14 +9,14 @@ don't forget to use passphrase
 ## build dev container image
 - run command 
 ```sh
-docker-compose -f .\docker-compose.dev.yml build
+docker-compose -f docker-compose.dev.yml build
 ```
 - directory to work "/workspace"
 
 ## run dev container
 - run command
 ```sh 
-docker-compose -f .\docker-compose.dev.yml up -d
+docker-compose -f docker-compose.dev.yml up -d
 ```
 - directory to work "/workspace"
 
@@ -77,7 +77,7 @@ cat ~/.ssh/id_ed25519.pub
 ```
 - run command
 ```sh
-docker-compose -f .\docker-compose.nginx.yml up -d
+docker-compose -f docker-compose.nginx.yml up -d
 ```
 
 # Mongo container
@@ -85,21 +85,21 @@ docker-compose -f .\docker-compose.nginx.yml up -d
 ## run mongo container
 - run command 
 ```sh 
-docker-compose -f .\docker-compose.mongo.yml up -d
+docker-compose -f docker-compose.mongo.yml up -d
 ```
 
 # extra commands (for all containers at once)
 - up all containers at the same time
 ```sh
-docker-compose -f .\docker-compose.dev.yml -f .\docker-compose.mongo.yml -f .\docker-compose.nginx.yml up -d
+docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml up -d
 ```
 - stop all containers at the same time 
 ```sh
-docker-compose -f .\docker-compose.dev.yml -f .\docker-compose.mongo.yml -f .\docker-compose.nginx.yml stop
+docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml stop
 ```
 - drop all containers at the same time 
 ```sh
-docker-compose -f .\docker-compose.dev.yml -f .\docker-compose.mongo.yml -f .\docker-compose.nginx.yml down
+docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml down
 ```
 
 
