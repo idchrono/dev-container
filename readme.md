@@ -72,8 +72,8 @@ cat ~/.ssh/id_ed25519.pub
 - nginx/nginx.conf - edit to map ports and files/directory to necessary locations
 ```
     by default:
-    - 3000 port of app container bind to "/" location
-    - 3001 port of app container bind to "/api" location
+    - 3001 port of app container bind to "/" location
+    - 3000 port of app container bind to "/api" location
 ```
 - run command
 ```sh
