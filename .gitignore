@@ -1,2 +1,7 @@
+# IDE
+.idea
+.vscode
+
+# ssh keys
 dockerkey
 dockerkey.pub

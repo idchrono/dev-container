@@ -6,8 +6,18 @@ ssh-keygen -b 4096 -t rsa -f dockerkey
 ```
 don't forget to use passphrase
 
+## build dev container image
+- run command 
+```sh
+docker-compose -f .\docker-compose.dev.yml build
+```
+- directory to work "/workspace"
+
 ## run dev container
-- run command ```docker-compose -f .\docker-compose.dev.yml up -d```
+- run command
+```sh 
+docker-compose -f .\docker-compose.dev.yml up -d
+```
 - directory to work "/workspace"
 
 ## clone your sources
@@ -65,12 +75,18 @@ cat ~/.ssh/id_ed25519.pub
     - 3000 port of app container bind to "/" location
     - 3001 port of app container bind to "/api" location
 ```
-- run command ```docker-compose -f .\docker-compose.nginx.yml up -d```
+- run command
+```sh
+docker-compose -f .\docker-compose.nginx.yml up -d
+```
 
 # Mongo container
 
 ## run mongo container
-- run command ```docker-compose -f .\docker-compose.mongo.yml up -d```
+- run command 
+```sh 
+docker-compose -f .\docker-compose.mongo.yml up -d
+```
 
 # extra commands (for all containers at once)
 - up all containers at the same time
