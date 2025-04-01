@@ -12,6 +12,7 @@ networks:
 services:
   app:
     container_name: app
+    image: ts-dev-container-app
     build: { dockerfile: dev.dockerfile }
     volumes:
       - workspace-data:/workspace
@@ -20,7 +21,7 @@ services:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    command: /bin/sh -c "/usr/sbin/sshd -D && while sleep 1000; do :; done"
     healthcheck:
       test: [ "CMD", "pg_isready" ]
       interval: 10s
