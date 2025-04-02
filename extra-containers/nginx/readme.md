@@ -13,7 +13,7 @@ cp ./nginx.conf.sample ./nginx.conf
 ```
 - run command
 ```sh
-docker-compose -f docker-compose.nginx.yml up -d
+docker-compose -f docker-compose.yml up -d
 ```
 
 # Volumes

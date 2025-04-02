@@ -70,8 +70,9 @@ cat ~/.ssh/id_rsa.pub
 # Extra containers
 You can add to your dev-container environment some extra containers like nginx, mongo-db etc.
 
-- [nginx](extra-containers/nginx/readme.md)
 - [mongo-db](extra-containers/mongo-db/readme.md)
+- [nginx](extra-containers/nginx/readme.md)
+- [redis](extra-containers/redis/readme.md)
 
 # Networks
 - dev-container-net - network to connect related to your project "extra containers"
