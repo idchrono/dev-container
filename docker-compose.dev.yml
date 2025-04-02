@@ -60,3 +60,26 @@ services:
       - "9122:22"
     networks:
       - dev-container-net
+
+  python-dev-container:
+    container_name: python-dev-container
+    image: python-dev-container
+    build: { dockerfile: ./dockerfiles/python.dockerfile }
+    volumes:
+      - workspace-data:/workspace
+      - ssh-data:/root/.ssh
+      - root-cache:/root/.cache
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/sh -c "/usr/sbin/sshd -D && while sleep 1000; do :; done"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "9222:22"
+    networks:
+      - dev-container-net
