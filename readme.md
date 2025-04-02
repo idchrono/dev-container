@@ -56,14 +56,14 @@ private key: dockerkey (generated before build dev container)
 - press "Start IDE and Connect" (maybe "Download IDE and Continue" when first connect)
 - input your "passphrase", used when ssh-key was generated
 
-## generate ssh keys for github
+## generate ssh keys for github (inside container)
 - run to generate keys
 ```sh
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 - run to see your public key 
 ```sh
-cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_rsa.pub
 ```
 - go to "https://github.com/settings/keys" and add your public key
 
