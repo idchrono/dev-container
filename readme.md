@@ -29,7 +29,7 @@ git clone https://github.com/your/repository.git /workspace
 ## add preinstalled components to dev container
 you can add all components you need to install in dev.dockerfile
 
-## develop inside container (vs code)
+## develop inside container with VS Code
 - open "vs code"
 - press "Ctrl+Shift+P"
 - select "Attach to running container"
@@ -37,7 +37,7 @@ you can add all components you need to install in dev.dockerfile
 - select workspace directory "/workspace"
 - clone your repository here and can start to work with it
 
-## develop inside container (rider)
+## develop inside container with JetBrains (rider, webstorm etc.)
 - open "rider"
 - select "remote development"
 - select "ssh" -> "new project"
