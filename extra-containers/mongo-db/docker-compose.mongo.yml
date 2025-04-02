@@ -1,4 +1,4 @@
-name: "ts-dev-container"
+name: "dev-container"
 
 volumes:
   db-data:
@@ -9,8 +9,8 @@ networks:
 
 
 services:
-  mongo:
-    container_name: mongo-db
+  dev-mongo-db:
+    container_name: dev-mongo-db
     image: mongo
     restart: always
     volumes:

@@ -1,19 +1,20 @@
-# TS Dev Container
+# Dev Containers
 
-## generate ssh keys to access ssh server inside container
+## Generate ssh keys to access ssh server inside container
 ```sh
 ssh-keygen -b 4096 -t rsa -f dockerkey
 ```
 don't forget to use passphrase
 
-## build dev container image
+## Build dev containers image (ts-dev-container, cs-dev-container)
+- comment unnecessary containers in docker-compose.dev.yml
 - run command 
 ```sh
 docker-compose -f docker-compose.dev.yml build
 ```
 - directory to work "/workspace"
 
-## run dev container
+## run dev containers
 - run command
 ```sh 
 docker-compose -f docker-compose.dev.yml up -d
@@ -32,7 +33,7 @@ you can add all components you need to install in dev.dockerfile
 - open "vs code"
 - press "Ctrl+Shift+P"
 - select "Attach to running container"
-- select container with name "app" (by default, you can rename it, but don't forget to rename dependencies)
+- select container with name "ts-dev-container" (by default, you can rename it, but don't forget to rename dependencies)
 - select workspace directory "/workspace"
 - clone your repository here and can start to work with it
 
@@ -43,7 +44,7 @@ you can add all components you need to install in dev.dockerfile
 - add "ssh connection" 
 ```
 host: localhost
-port: 2222 (check it in docker-compose.dev.yml file)
+port: 9022 (check it in docker-compose.dev.yml file)
 username: root
 authentification type: key pair
 private key: dockerkey (generated before build dev container)
@@ -66,48 +67,16 @@ cat ~/.ssh/id_ed25519.pub
 ```
 - go to "https://github.com/settings/keys" and add your public key
 
-# Nginx container
+# Extra containers
+You can add to your dev-container environment some extra containers like nginx, mongo-db etc.
 
-## run nginx container
-- nginx/nginx.conf - edit to map ports and files/directory to necessary locations
-```
-    by default:
-    - 8080 port of app container bind to "/" location
-    - 3000 port of app container bind to "/api" location
-```
-- run command
-```sh
-docker-compose -f docker-compose.nginx.yml up -d
-```
-
-# Mongo container
-
-## run mongo container
-- run command 
-```sh 
-docker-compose -f docker-compose.mongo.yml up -d
-```
-
-# extra commands (for all containers at once)
-- up all containers at the same time
-```sh
-docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml up -d
-```
-- stop all containers at the same time 
-```sh
-docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml stop
-```
-- drop all containers at the same time 
-```sh
-docker-compose -f docker-compose.dev.yml -f docker-compose.mongo.yml -f docker-compose.nginx.yml down
-```
-
+- [nginx](extra-containers/nginx/readme.md)
+- [mongo-db](extra-containers/mongo-db/readme.md)
 
 # Networks
-- dev-container-net - network to connect related to your project containers
+- dev-container-net - network to connect related to your project "extra containers"
 
 # Volumes
 - "workspace-data" - your work directory, can be mounted to your file system
 - "ssh-data" - mounted directory to store your ssh keys to not lost them after container recreated
-- "db-data" - mounted directory to store mongodb data to not lost them after container recreated
 - "root-cache" - mounted directory to store cache (at least jetbrains) to not lost them after container recreated

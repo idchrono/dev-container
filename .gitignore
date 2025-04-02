@@ -5,3 +5,9 @@
 # ssh keys
 dockerkey
 dockerkey.pub
+
+# configured nginx config
+extra-containers/nginx/nginx.conf
+
+# cache
+cache/*

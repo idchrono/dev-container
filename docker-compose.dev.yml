@@ -1,20 +1,24 @@
-name: "ts-dev-container"
+name: "dev-container"
 
 volumes:
   workspace-data:
   ssh-data:
   root-cache:
-
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./cache
 
 networks:
   dev-container-net:
 
 
 services:
-  app:
-    container_name: app
-    image: ts-dev-container-app
-    build: { dockerfile: dev.dockerfile }
+  ts-dev-container:
+    container_name: ts-dev-container
+    image: ts-dev-container
+    build: { dockerfile: ./dockerfiles/ts.dockerfile }
     volumes:
       - workspace-data:/workspace
       - ssh-data:/root/.ssh
@@ -30,6 +34,29 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "2222:22"
+      - "9022:22"
+    networks:
+      - dev-container-net
+
+  cs-dev-container:
+    container_name: cs-dev-container
+    image: cs-dev-container
+    build: { dockerfile: ./dockerfiles/cs.dockerfile }
+    volumes:
+      - workspace-data:/workspace
+      - ssh-data:/root/.ssh
+      - root-cache:/root/.cache
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/sh -c "/usr/sbin/sshd -D && while sleep 1000; do :; done"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "9122:22"
     networks:
       - dev-container-net
