@@ -27,7 +27,7 @@ services:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-    command: /bin/sh -c "/usr/sbin/sshd -D && while sleep 1000; do :; done"
+    command: /bin/sh -c "/usr/sbin/sshd -D && sleep infinity"
     healthcheck:
       test: [ "CMD", "pg_isready" ]
       interval: 10s
